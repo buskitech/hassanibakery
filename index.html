@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hassani Bakery - Fresh bread, pastries, and cakes in Port Harcourt. Order online for the finest baked goods in G.R.A. Phase 3.">
+    <meta name="keywords" content="bakery, bread, pastries, cakes, Port Harcourt, fresh baked goods, Hassani Bakery">
+    <meta name="author" content="Hassani Bakery">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https:;">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hassani Bakery - Fresh Bread & Pastries">
+    <meta property="og:description" content="Experience the authentic taste of Port Harcourt's finest bakery. Fresh bread, pastries, and cakes made with love.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hassanibakery.com">
+    <meta property="og:image" content="assets/hassani-logo.jpg">
+    
+    <title>Hassani Bakery</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="assets/hassani-logo.jpg" alt="Hassani Bakery" class="logo">
+                    <div class="brand-info">
+                        <h1 class="brand-name" onclick="scrollToTop()">Hassani Bakery</h1>
+                        <p class="brand-tagline">Fresh • Quality • Delicious</p>
+                    </div>
+                </div>
+                <nav class="nav-desktop">
+                    <button class="btn btn-outline" onclick="orderViaWhatsApp()">
+                        <i class="fas fa-phone"></i>
+                        Order Now
+                    </button>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-menu-item" onclick="closeMobileMenu()">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+            <a href="#menu" class="mobile-menu-item" onclick="closeMobileMenu()">
+                <i class="fas fa-utensils"></i>
+                Menu
+            </a>
+            <a href="#about" class="mobile-menu-item" onclick="closeMobileMenu()">
+                <i class="fas fa-info-circle"></i>
+                About
+            </a>
+            <a href="#contact" class="mobile-menu-item" onclick="closeMobileMenu()">
+                <i class="fas fa-map-marker-alt"></i>
+                Contact
+            </a>
+            <button class="btn btn-primary mobile-order-btn" onclick="orderViaWhatsApp()">
+                <i class="fas fa-phone"></i>
+                Order Now
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge">
+                        <i class="fas fa-clock"></i>
+                        Fresh Daily
+                    </div>
+                    <h2 class="hero-title">
+                        Freshly Baked
+                        <span class="accent-text">Just for You</span>
+                    </h2>
+                    <p class="hero-description">
+                        Experience the authentic taste of Port Harcourt's finest bakery. From our signature Hassani Marble Bread to delicious pastries and cakes, we bring you quality baked goods made with love.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-accent" onclick="orderViaWhatsApp()">
+                            <i class="fas fa-phone"></i>
+                            Order via WhatsApp
+                        </button>
+                        <button class="btn btn-outline-white" onclick="openGoogleMaps()">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Visit Our Store
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="assets/hero-bread01.jpg" alt="Fresh Hassani Bread" class="floating-animation">
+                    <div class="quality-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Premium Quality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="badge">
+                        <i class="fas fa-heart"></i>
+                        Our Story
+                    </div>
+                    <h3 class="section-title">Baking with Love Since Day One</h3>
+                    <p class="about-description">
+                        At Hassani Bakery, we believe that great bread starts with great ingredients and even greater passion. 
+                        Located in the heart of Port Harcourt, we've been serving our community with freshly baked goods that 
+                        bring families together around the table.
+                    </p>
+                    <p class="about-description">
+                        From our signature Hassani Marble Bread to our delicious pastries and cakes, every item is crafted 
+                        with care using traditional techniques and the finest ingredients. We're not just a bakery – we're 
+                        part of your daily life, your celebrations, and your cherished moments.
+                    </p>
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4>Premium Quality</h4>
+                            <p>Only the finest ingredients</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Fresh Daily</h4>
+                            <p>Baked fresh every morning</p>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Community</h4>
+                            <p>Serving Port Harcourt & Beyond</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="trust-gallery">
+                        <div class="gallery-slides">
+                            <!-- Slides will be populated by JavaScript -->
+                        </div>
+                        
+                    <div class="trust-badge">
+                        <i class="fas fa-star"></i>
+                        <span>Trusted by Families</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order Section -->
+    <section class="how-to-order">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">How to Order</h3>
+                <p class="section-description">Simple steps to get your fresh baked goods</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Browse Menu</h4>
+                    <p>Choose from our delicious selection of breads, pastries, and cakes</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Contact Us</h4>
+                    <p>Call or WhatsApp us at 09060413678 to place your order</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Enjoy Fresh</h4>
+                    <p>Pick up your order or visit our store for the freshest experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="menu-header">
+                <h3 class="section-title">Our Delicious Menu</h3>
+                <p class="section-description">
+                    Discover our wide range of freshly baked breads, pastries, and cakes. All bread loaves are unsliced and can be sliced upon request.
+                </p>
+            </div>
+
+            <!-- Breads -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-utensils"></i>
+                    <h4>Fresh Breads</h4>
+                </div>
+                <div class="menu-grid" id="breadsGrid">
+                    <!-- Bread items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Pastries -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-coffee"></i>
+                    <h4>Pastries</h4>
+                </div>
+                <div class="menu-grid menu-grid-4" id="pastriesGrid">
+                    <!-- Pastry items will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Cakes -->
+            <div class="menu-category">
+                <div class="category-header">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h4>Cakes</h4>
+                </div>
+                <div class="menu-grid" id="cakesGrid">
+                    <!-- Cake items will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="section-title">Visit Our Bakery</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>11, Temple Amadi Avenue, off Cherubim road, G.R.A. Phase 3, Port Harcourt</p>
+                            <button class="btn btn-outline map-btn" onclick="openGoogleMaps()">
+                                <i class="fas fa-directions"></i>
+                                Get Directions
+                            </button>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call or WhatsApp</h4>
+                            <p>09060413678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Special Note</h4>
+                            <p>All bread loaves are unsliced. Can be sliced upon request.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <h3 class="section-title">Payment Information</h3>
+                    <div class="payment-card">
+                        <h4>Pay with Transfer</h4>
+                        <p class="account-name">Account Name: Hassani Food & Drink</p>
+                        <div class="bank-info">
+                            <div class="bank">
+                                <h5>Providus Bank</h5>
+                                <div class="account-number-container">
+                                    <p class="account-number">1506922942</p>
+                                    <button class="copy-btn" onclick="copyToClipboard('1506922942', this)" title="Copy account number">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bank">
+                                <h5>Zenith Bank</h5>
+                                <div class="account-number-container">
+                                    <p class="account-number">1510207772</p>
+                                    <button class="copy-btn" onclick="copyToClipboard('1510207772', this)" title="Copy account number">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="assets/hassani-logo.jpg" alt="Hassani Bakery">
+                        <div>
+                            <h4>Hassani Bakery</h4>
+                            <p>Fresh • Quality • Delicious</p>
+                        </div>
+                    </div>
+                    <p>Port Harcourt's premier bakery, serving fresh bread, pastries, and cakes since our establishment.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#" onclick="orderViaWhatsApp()">Order Now</a>
+                    <a href="#menu">Our Menu</a>
+                    <a href="#contact">Contact Us</a>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <button onclick="openInstagram()">
+                            <i class="fab fa-instagram"></i>
+                        </button>
+                        <button onclick="openFacebook()">
+                            <i class="fab fa-facebook"></i>
+                        </button>
+                    </div>
+                    <p>@hassanibakery</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hassani Bakery. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp">
+        <button onclick="quickInquiryViaWhatsApp()">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
