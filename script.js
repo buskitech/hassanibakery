@@ -12,7 +12,219 @@ const menuData = {
         { name: "Hassani Special \"Dusty Milk\" Bread", price: "₦4,500", description: "Our special milk bread", featured: true, image: "assets/hero-bread.jpg" },
         { name: "Choco-Fruity Mix Bread", price: "₦4,000", description: "Chocolate and fruit combination", image: "assets/bread-variety.jpg" },
         { name: "Small Bread", price: "₦350", description: "Perfect for individual servings", image: "assets/hero-bread.jpg" }
+    ],// Menu Data
+const menuData = {
+    breads: [
+        { name: "Sardine Bread", price: "₦3,600", description: "Savory bread with sardine filling", image: "assets/hero-bread.jpg" },
+        { name: "Sardine Bread Plus", price: "₦6,700", description: "Premium sardine bread with extra filling", image: "assets/bread-variety.jpg" },
+        { name: "Chocolate Bread", price: "₦3,500", description: "Rich chocolate-flavored bread", image: "assets/hero-bread.jpg" },
+        { name: "Mini-burger (sider) Bread", price: "₦2,000", description: "Perfect for mini burgers", image: "assets/bread-variety.jpg" },
+        { name: "Hassani Marble Bread", price: "₦4,500", description: "Our signature marble bread", featured: true, image: "assets/hero-bread.jpg" },
+        { name: "Coconut Bread", price: "₦3,200", description: "Tropical coconut-flavored bread", image: "assets/bread-variety.jpg" },
+        { name: "Fruit Bread", price: "₦3,300", description: "Mixed fruit bread", image: "assets/hero-bread.jpg" },
+        { name: "Jumbo Bread", price: "₦3,200", description: "Large family-sized bread", image: "assets/bread-variety.jpg" },
+        { name: "Hassani Special \"Dusty Milk\" Bread", price: "₦4,500", description: "Our special milk bread", featured: true, image: "assets/hero-bread.jpg" },
+        { name: "Choco-Fruity Mix Bread", price: "₦4,000", description: "Chocolate and fruit combination", image: "assets/bread-variety.jpg" },
+        { name: "Small Bread", price: "₦350", description: "Perfect for individual servings", image: "assets/hero-bread.jpg" }
     ],
+    pastries: [
+        { name: "Meat Pie", price: "₦2,000", description: "Flaky pastry with seasoned meat filling", image: "assets/pastries.jpg" },
+        { name: "Chicken Pie", price: "₦2,500", description: "Tender chicken in crispy pastry", image: "assets/pastries.jpg" },
+        { name: "Plain Doughnut", price: "₦8,000", description: "Box of 6 classic doughnuts", image: "assets/pastries.jpg" },
+        { name: "Creamy Doughnuts", price: "₦14,000", description: "Box of 6 cream-filled doughnuts", image: "assets/pastries.jpg" }
+    ],
+    cakes: [
+        { name: "Chocolate Cake Slices", price: "₦7,500", description: "Rich chocolate cake slices", image: "assets/cake-slices.jpg" },
+        { name: "Red Velvet Cake Slices", price: "₦7,500", description: "Classic red velvet cake", image: "assets/cake-slices.jpg" },
+        { name: "Marble Cake Slices", price: "₦7,500", description: "Marble cake slices", image: "assets/cake-slices.jpg" },
+        { name: "Vanilla Cake Slices", price: "₦7,500", description: "Pure vanilla cake slices", image: "assets/cake-slices.jpg" },
+        { name: "Cupcakes Variety Box", price: "₦20,000", description: "Box of 12: Red Velvet, Chocolate, Vanilla, Strawberry, Marble, Oreo", featured: true, image: "assets/cake-slices.jpg" }
+    ]
+};
+
+// Family Images for Gallery - Optimized (Limited to 6 to faster load)
+const familyImages = [
+    'assets/family/family1.jpg', 'assets/family/family2.jpg', 'assets/family/family3.jpg',
+    'assets/family/family4.jpg', 'assets/family/family5.jpg', 'assets/family/family6.jpg'
+];
+
+// Utility Functions
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function orderViaWhatsApp() {
+    const message = "Hello Hassani Bakery! I'd like to place an order from your delicious menu. Please assist me.";
+    window.open(`https://wa.me/2349060413678?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+function orderItemViaWhatsApp(itemName) {
+    const message = `Hello Hassani Bakery! I'd like to order: ${itemName}. Please confirm if it's available.`;
+    window.open(`https://wa.me/2349060413678?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+function quickInquiryViaWhatsApp() {
+    const message = "Hello Hassani Bakery! I have a quick question about your products. Can you help me?";
+    window.open(`https://wa.me/2349060413678?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+function openGoogleMaps() {
+    window.open('https://maps.app.goo.gl/fhaUEGuiAzdGVWEA7', '_blank');
+}
+
+function openInstagram() {
+    window.open('https://www.instagram.com/hassanibakery?igsh=eHh0bDhtYnV4amdi', '_blank');
+}
+
+function openFacebook() {
+    window.open('https://www.facebook.com/profile.php?id=61579212540596&mibextid=rS40aB7S9Ucbxw6v', '_blank');
+}
+
+function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('active');
+}
+
+// Gallery System
+let currentSlide = 0;
+let slideInterval;
+
+function initGallery() {
+    const gallerySlides = document.querySelector('.gallery-slides');
+    if (!gallerySlides) return;
+
+    // Check if we have only one image initially (the placeholder)
+    // If we have family images, replace/append them
+    if (familyImages.length > 0) {
+        gallerySlides.innerHTML = familyImages.map((image, index) =>
+            `<div class="gallery-slide ${index === 0 ? 'active' : ''}">
+                <img src="${image}" alt="Hassani Bakery Customer ${index + 1}" loading="lazy">
+            </div>`
+        ).join('');
+    }
+
+    startSlideShow();
+
+    const gallery = document.querySelector('.about-image-wrapper');
+    if (gallery) {
+        gallery.addEventListener('mouseenter', pauseSlideShow);
+        gallery.addEventListener('mouseleave', startSlideShow);
+    }
+}
+
+function startSlideShow() {
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, 4000);
+}
+
+function pauseSlideShow() {
+    clearInterval(slideInterval);
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % familyImages.length;
+    const slides = document.querySelectorAll('.gallery-slide');
+    if (slides.length > 0) {
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === currentSlide));
+    }
+}
+
+// Copy to Clipboard
+function copyToClipboard(text, button) {
+    navigator.clipboard.writeText(text).then(() => {
+        const icon = button.querySelector('i');
+        const originalClass = icon.className;
+
+        button.classList.add('copied');
+        icon.className = 'fas fa-check';
+
+        setTimeout(() => {
+            button.classList.remove('copied');
+            icon.className = originalClass;
+        }, 2000);
+    }).catch(() => {
+        alert('Failed to copy. Please copy manually.');
+    });
+}
+
+// Create Menu Item HTML
+function createMenuItem(item) {
+    return `
+        <div class="menu-item">
+            <div class="menu-item-image">
+                <img src="${item.image}" alt="${item.name}" loading="lazy">
+                ${item.featured ? '<div class="popular-badge">Popular</div>' : ''}
+            </div>
+            <div class="menu-item-content">
+                <h5 class="menu-item-title">${item.name}</h5>
+                <p class="menu-item-description">${item.description}</p>
+                <div class="menu-item-footer">
+                    <span class="menu-item-price">${item.price}</span>
+                    <button class="order-btn" onclick="orderItemViaWhatsApp('${item.name}')">Order</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Populate Menu Sections
+function populateMenu() {
+    const breadsGrid = document.getElementById('breadsGrid');
+    const pastriesGrid = document.getElementById('pastriesGrid');
+    const cakesGrid = document.getElementById('cakesGrid');
+
+    if (breadsGrid) breadsGrid.innerHTML = menuData.breads.map(createMenuItem).join('');
+    if (pastriesGrid) pastriesGrid.innerHTML = menuData.pastries.map(createMenuItem).join('');
+    if (cakesGrid) cakesGrid.innerHTML = menuData.cakes.map(createMenuItem).join('');
+}
+
+// Header Scroll Effect
+function handleHeaderScroll() {
+    const header = document.querySelector('.header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+}
+
+// Image Error Handling
+function handleImageError(img) {
+    if (!img.src.includes('data:image')) {
+        img.src = 'data:image/svg+xml,%3Csvg width="300" height="200" xmlns="http://www.w3.org/2000/svg"%3E%3Crect width="100%25" height="100%25" fill="%23f3f4f6"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="14" fill="%239fa6b7" text-anchor="middle" dy=".3em"%3EImage Not Found%3C/text%3E%3C/svg%3E';
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate Menu
+    populateMenu();
+
+    // Init Gallery
+    initGallery();
+
+    // Header Scroll Listener
+    window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+    handleHeaderScroll();
+
+    // Close mobile menu on clicking outside
+    document.addEventListener('click', (e) => {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        if (mobileMenu && mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) &&
+            !mobileMenuBtn.contains(e.target)) {
+            toggleMobileMenu();
+        }
+    });
+
+    // Image Error Listener
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', () => handleImageError(img));
+    });
+});
+
     pastries: [
         { name: "Meat Pie", price: "₦2,000", description: "Flaky pastry with seasoned meat filling", image: "assets/pastries.jpg" },
         { name: "Chicken Pie", price: "₦2,500", description: "Tender chicken in crispy pastry", image: "assets/pastries.jpg" },
